@@ -135,3 +135,24 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', highlightNavLink);
     highlightNavLink(); // Call once on page load
 });
+
+//Dark Mode Toggle
+const darkModeToggle = document.getElementById('dark-mode-toggle');
+const htmlElement = document.documentElement;
+
+// Check for saved user preference
+if (localStorage.getItem('darkMode') === 'enabled') {
+    htmlElement.classList.add('dark');
+}
+
+if (darkModeToggle) {
+    darkModeToggle.addEventListener('click', () => {
+        if (htmlElement.classList.contains('dark')) {
+            htmlElement.classList.remove('dark');
+            localStorage.setItem('darkMode', 'disabled');
+        } else {
+            htmlElement.classList.add('dark');
+            localStorage.setItem('darkMode', 'enabled');
+        }
+    });
+}
